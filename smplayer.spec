@@ -1,6 +1,6 @@
 Name:           smplayer
-Version:        16.4.0
-%global smtube_ver 16.3.0 
+Version:        16.6.0
+%global smtube_ver 16.6.0 
 Release:        1%{?dist}
 Summary:        A graphical frontend for mplayer
 
@@ -25,7 +25,8 @@ BuildRequires:  quazip-devel
 BuildRequires:  qtsingleapplication-devel
 BuildRequires:  qtwebkit-devel
 # smplayer without mplayer is quite useless
-Requires:       mplayer
+Requires:       mpv
+Requires:       mpv-libs
 Requires:       kde-filesystem
 %{?_qt4_version:Requires: qt4%{?_isa} >= %{_qt4_version}}
 
@@ -130,6 +131,9 @@ update-desktop-database &> /dev/null || :
 %{_docdir}/%{name}/
 
 %changelog
+* Sun Jun 19 2016 Pavlo Rudyi <paulcarroty at riseup.net> - 16.6.0-1
+- Update to 16.6.0
+
 * Fri Apr 01 2016 Sérgio Basto <sergio@serjux.com> - 16.4.0-1
 - Update to 16.4.0
 
