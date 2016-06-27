@@ -1,7 +1,7 @@
 Name:           smplayer
 Version:        16.6.0
 %global smtube_ver 16.6.0 
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A graphical frontend for mplayer
 
 Group:          Applications/Multimedia
@@ -131,6 +131,9 @@ update-desktop-database &> /dev/null || :
 %{_docdir}/%{name}/
 
 %changelog
+* Sun Jun 26 2016 The UnitedRPMs Project (Key for UnitedRPMs infrastructure) <unitedrpms@protonmail.com> - 16.6.0-2
+- Rebuild with new ffmpeg
+
 * Sun Jun 19 2016 Pavlo Rudyi <paulcarroty at riseup.net> - 16.6.0-1
 - Update to 16.6.0
 
