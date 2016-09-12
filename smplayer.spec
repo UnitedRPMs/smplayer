@@ -1,7 +1,7 @@
 Name:           smplayer
-Version:        16.8.0
+Version:        16.9.0
 %global smtube_ver 16.7.2 
-%global smplayer_themes_ver 16.6.0
+%global smplayer_themes_ver 16.8.0
 %global smplayer_skins_ver 15.2.0
 Release:        1%{?dist}
 Summary:        A graphical frontend for mplayer
@@ -172,6 +172,9 @@ fi
 %{_datadir}/smplayer/themes/
 
 %changelog
+* Mon Sep 12 2016 Pavlo Rudyi <paulcarroty at riseup.net> - 16.9.0-1
+- Update to 16.9
+
 * Fri Aug 05 2016 Pavlo Rudyi <paulcarroty at riseup.net> - 16.8.0-1
 - Update to 16.8  
 
