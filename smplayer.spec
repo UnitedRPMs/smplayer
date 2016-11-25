@@ -1,6 +1,6 @@
 Name:           smplayer
-Version:        16.9.0
-%global smtube_ver 16.7.2 
+Version:        16.11.0
+%global smtube_ver 16.7.2
 %global smplayer_themes_ver 16.8.0
 %global smplayer_skins_ver 15.2.0
 Release:        1%{?dist}
@@ -15,10 +15,10 @@ Source3:        http://downloads.sourceforge.net/smplayer/smplayer-themes-%{smpl
 Source4:        http://downloads.sourceforge.net/smplayer/smplayer-skins-%{smplayer_skins_ver}.tar.bz2
 # Fix regression in Thunar (TODO: re-check in upcoming versions!)
 # https://bugzilla.rpmfusion.org/show_bug.cgi?id=1217
-Patch0:         smplayer-0.8.3-desktop-files.patch
-Patch2:         smplayer-14.9.0.6966-system-qtsingleapplication.patch
-Patch3:         smtube-16.3.0-system-qtsingleapplication.patch
-Patch4:         smplayer-16.7.0-removeqt43code.patch
+Patch0:         https://raw.githubusercontent.com/UnitedRPMs/smplayer-smtube/master/smplayer-0.8.3-desktop-files.patch
+Patch2:         https://raw.githubusercontent.com/UnitedRPMs/smplayer-smtube/master/smplayer-14.9.0.6966-system-qtsingleapplication.patch
+Patch3:         https://raw.githubusercontent.com/UnitedRPMs/smplayer-smtube/master/smtube-16.3.0-system-qtsingleapplication.patch
+Patch4:         https://raw.githubusercontent.com/UnitedRPMs/smplayer-smtube/master/smplayer-16.7.0-removeqt43code.patch
 
 BuildRequires:  desktop-file-utils
 BuildRequires:  pkgconfig(Qt5)
@@ -41,8 +41,9 @@ BuildRequires:  quazip-qt5-devel
 # for smtube only
 BuildRequires:  pkgconfig(Qt5WebKit)
 # smplayer without mplayer is quite useless
-Requires:       mplayer
+Requires:       mplayer-backend
 Requires:       hicolor-icon-theme
+Recommends:     smtube
 
 %{?_qt5_version:Requires: qt5-qtbase%{?_isa} >= %{_qt5_version}}
 
@@ -56,6 +57,17 @@ for Mplayer filters and more. One of the main features is the ability to
 remember the state of a played file, so when you play it later it will resume
 at the same point and with the same settings. smplayer is developed with
 the Qt toolkit, so it's multi-platform.
+
+%package -n smtube
+Summary: YouTube browser for SMPlayer
+Group: Applications/Multimedia
+License: GPLv2+
+URL: http://www.smtube.org
+Recommends:  smplayer
+
+%description -n smtube
+This is a YouTube browser for SMPlayer. You can browse, search
+and play YouTube videos.
 
 %package themes
 Summary:  Themes and Skins for SMPlayer
@@ -85,8 +97,8 @@ popd
 
 # correction for wrong-file-end-of-line-encoding
 %{__sed} -i 's/\r//' *.txt
-# fix files which are not UTF-8 
-iconv -f Latin1 -t UTF-8 -o Changelog.utf8 Changelog 
+# fix files which are not UTF-8
+iconv -f Latin1 -t UTF-8 -o Changelog.utf8 Changelog
 mv Changelog.utf8 Changelog
 
 # change rcc binary
@@ -94,12 +106,20 @@ mv Changelog.utf8 Changelog
 %{__sed} -e 's/rcc -binary/rcc-qt5 -binary/' -i smplayer-skins-%{smplayer_skins_ver}/themes/Makefile
 
 %build
-#{qmake_qt5} src
-%make_build QMAKE=%{_qt5_qmake} PREFIX=%{_prefix} LRELEASE=%{_bindir}/lrelease-qt5
+pushd src
+    %{qmake_qt5}
+    %make_build DATA_PATH=\\\"%{_datadir}/%{name}\\\" \
+        TRANSLATION_PATH=\\\"%{_datadir}/%{name}/translations\\\" \
+        DOC_PATH=\\\"%{_docdir}/%{name}\\\" \
+        THEMES_PATH=\\\"%{_datadir}/%{name}/themes\\\" \
+        SHORTCUTS_PATH=\\\"%{_datadir}/%{name}/shortcuts\\\"
+    %{_bindir}/lrelease-qt5 %{name}.pro
+popd
 
-pushd smtube-%{smtube_ver}
-    sed -i 's|smtube/translations|smplayer/translations|' Makefile
-    %make_build QMAKE=%{_qt5_qmake} PREFIX=%{_prefix} LRELEASE=%{_bindir}/lrelease-qt5
+pushd smtube-%{smtube_ver}/src
+    %{qmake_qt5}
+    %make_build TRANSLATION_PATH=\\\"%{_datadir}/smtube/translations\\\"
+    %{_bindir}/lrelease-qt5 smtube.pro
 popd
 
 pushd smplayer-themes-%{smplayer_themes_ver}
@@ -131,9 +151,7 @@ pushd smplayer-skins-%{smplayer_skins_ver}
 popd
 
 %check
-desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
-desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}_enqueue.desktop
-desktop-file-validate %{buildroot}%{_datadir}/applications/smtube.desktop
+desktop-file-validate %{buildroot}%{_datadir}/applications/*.desktop
 
 %post
 /usr/bin/update-desktop-database &> /dev/null || :
@@ -152,16 +170,22 @@ fi
 %files
 %license Copying*
 %{_bindir}/smplayer
-%{_bindir}/smtube
 %{_datadir}/applications/smplayer*.desktop
-%{_datadir}/applications/smtube.desktop
 %{_datadir}/icons/hicolor/*/apps/smplayer.png
 %{_datadir}/icons/hicolor/*/apps/smplayer.svg
-%{_datadir}/icons/hicolor/*/apps/smtube.png
-%{_datadir}/smplayer/
+%{_datadir}/smplayer
 %exclude %{_datadir}/smplayer/themes/
-%{_mandir}/man1/smplayer.1.gz
-%{_docdir}/%{name}/
+%{_mandir}/man1/%{name}.1.*
+%{_docdir}/%{name}
+
+%files -n smtube
+%doc smtube-%{smtube_ver}/Changelog smtube-%{smtube_ver}/Readme.txt
+%doc smtube-%{smtube_ver}/Release_notes.txt
+%license smtube-%{smtube_ver}/Copying.txt
+%{_bindir}/smtube
+%{_datadir}/applications/smtube.desktop
+%{_datadir}/icons/hicolor/*/apps/smtube.png
+%{_datadir}/smtube
 
 %files themes
 %doc smplayer-themes-%{smplayer_themes_ver}/README.txt
@@ -172,6 +196,9 @@ fi
 %{_datadir}/smplayer/themes/
 
 %changelog
+* Fri Nov 25 2016 Pavlo Rudyi <paulcarroty at riseup.net> - 16.11.0-1
+- Update to 16.11
+
 * Mon Sep 12 2016 Pavlo Rudyi <paulcarroty at riseup.net> - 16.9.0-1
 - Update to 16.9
 
