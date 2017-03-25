@@ -168,6 +168,7 @@ fi
 %files
 %license Copying*
 %{_bindir}/smplayer
+%{_bindir}/simple_web_server
 %{_datadir}/applications/smplayer*.desktop
 %{_datadir}/icons/hicolor/*/apps/smplayer.png
 %{_datadir}/icons/hicolor/*/apps/smplayer.svg
