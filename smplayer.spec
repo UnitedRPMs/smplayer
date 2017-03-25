@@ -18,7 +18,6 @@ Source4:        http://downloads.sourceforge.net/smplayer/smplayer-skins-%{smpla
 Patch0:         https://raw.githubusercontent.com/UnitedRPMs/smplayer-smtube/master/smplayer-0.8.3-desktop-files.patch
 Patch2:         https://raw.githubusercontent.com/UnitedRPMs/smplayer-smtube/master/smplayer-14.9.0.6966-system-qtsingleapplication.patch
 Patch3:         https://raw.githubusercontent.com/UnitedRPMs/smplayer-smtube/master/smtube-16.3.0-system-qtsingleapplication.patch
-Patch4:         https://raw.githubusercontent.com/UnitedRPMs/smplayer-smtube/master/smplayer-16.7.0-removeqt43code.patch
 
 BuildRequires:  desktop-file-utils
 BuildRequires:  pkgconfig(Qt5)
@@ -93,7 +92,6 @@ pushd smtube-%{smtube_ver}
 # correction for wrong-file-end-of-line-encoding on smtube
 %{__sed} -i 's/\r//' *.txt
 popd
-%patch4 -p1 -b .qt43
 
 # correction for wrong-file-end-of-line-encoding
 %{__sed} -i 's/\r//' *.txt
