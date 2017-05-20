@@ -1,6 +1,6 @@
 # smplayer
 
-[![Build Status](https://travis-ci.org/UnitedRPMs/smplayer-smtube.svg?branch=master)](https://travis-ci.org/UnitedRPMs/smplayer-smtube)
+[![Build Status](https://travis-ci.org/UnitedRPMs/smplayer.svg?branch=master)](https://travis-ci.org/UnitedRPMs/smplayer)
 
 Summary:        A graphical frontend for mplayer
 
