@@ -1,7 +1,7 @@
 Name:           smplayer
-Version:        17.3.0
+Version:        17.6.0
 %global smtube_ver 17.1.0
-%global smplayer_themes_ver 17.2.0
+%global smplayer_themes_ver 17.3.0
 %global smplayer_skins_ver 15.2.0
 Release:        1%{?dist}
 Summary:        A graphical frontend for mplayer
@@ -195,6 +195,10 @@ fi
 %{_datadir}/smplayer/themes/
 
 %changelog
+
+* Wed May 31 2017 Unitedrpms Project <unitedrpms AT protonmail DOT com> 17.6.0-1  
+- Updated to 17.6.0
+
 * Fri Nov 25 2016 Pavlo Rudyi <paulcarroty at riseup.net> - 17.3.0-1
 - Update to 17.3
 
