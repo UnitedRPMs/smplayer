@@ -207,7 +207,7 @@ fi
 
 %changelog
 
-* Thu Jul 06 2017 Unitedrpms Project <unitedrpms AT protonmail DOT com> 17.8.0-1  
+* Thu Aug 24 2017 Unitedrpms Project <unitedrpms AT protonmail DOT com> 17.8.0-1  
 - Updated to 17.8.0
 - Turn off online update checker
 - Turn off intrusive share widget
