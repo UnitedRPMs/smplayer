@@ -1,5 +1,5 @@
 Name:           smplayer
-Version:        17.7.0
+Version:        17.8.0
 %global smtube_ver 17.1.0
 %global smplayer_themes_ver 17.3.0
 %global smplayer_skins_ver 15.2.0
@@ -85,6 +85,15 @@ rm -rf smtube-%{smtube_ver}/src/qtsingleapplication/
 #TODO unbundle libmaia
 #rm -rf src/findsubtitles/libmaia
 
+# Turn off online update checker
+sed -e 's:DEFINES += UPDATE_CHECKER:#&:' \
+ -e 's:DEFINES += CHECK_UPGRADED:#&:' \
+ -i src/smplayer.pro
+
+# Turn off intrusive share widget
+sed -e 's:DEFINES += SHARE_WIDGET:#&:' \
+ -i src/smplayer.pro
+
 %patch0 -p0 -b .desktop-files
 %patch2 -p1 -b .qtsingleapplication
 pushd smtube-%{smtube_ver}
@@ -111,23 +120,25 @@ pushd src
         DOC_PATH=\\\"%{_docdir}/%{name}\\\" \
         THEMES_PATH=\\\"%{_datadir}/%{name}/themes\\\" \
         SHORTCUTS_PATH=\\\"%{_datadir}/%{name}/shortcuts\\\"
+        QMAKE_OPTS=DEFINES+=NO_DEBUG_ON_CONSOLE \
     %{_bindir}/lrelease-qt5 %{name}.pro
 popd
 
 pushd smtube-%{smtube_ver}/src
     %{qmake_qt5}
     %make_build TRANSLATION_PATH=\\\"%{_datadir}/smtube/translations\\\"
+    QMAKE_OPTS=DEFINES+=NO_DEBUG_ON_CONSOLE \
     %{_bindir}/lrelease-qt5 smtube.pro
 popd
 
 pushd smplayer-themes-%{smplayer_themes_ver}
-    %make_build
+    %make_build V=0
 popd
 
 pushd smplayer-skins-%{smplayer_skins_ver}
     mv README.txt README-skins.txt
     mv Changelog Changelog-skins.txt
-    %make_build
+    %make_build V=0
 popd
 
 %install
@@ -195,6 +206,11 @@ fi
 %{_datadir}/smplayer/themes/
 
 %changelog
+
+* Thu Jul 06 2017 Unitedrpms Project <unitedrpms AT protonmail DOT com> 17.8.0-1  
+- Updated to 17.8.0
+- Turn off online update checker
+- Turn off intrusive share widget
 
 * Thu Jul 06 2017 Unitedrpms Project <unitedrpms AT protonmail DOT com> 17.7.0-1  
 - Updated to 17.7.0
