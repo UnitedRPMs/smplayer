@@ -1,5 +1,5 @@
 Name:           smplayer
-Version:        17.10.2
+Version:        17.11.0
 %global smtube_ver 17.5.0
 %global smplayer_themes_ver 17.3.0
 %global smplayer_skins_ver 15.2.0
@@ -206,6 +206,9 @@ fi
 %{_datadir}/smplayer/themes/
 
 %changelog
+
+* Sun Nov 05 2017 Unitedrpms Project <unitedrpms AT protonmail DOT com> 17.11.0-1  
+- Updated to 17.11.0
 
 * Sat Oct 21 2017 Unitedrpms Project <unitedrpms AT protonmail DOT com> 17.10.2-1  
 - Updated to 17.10.2
