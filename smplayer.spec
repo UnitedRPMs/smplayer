@@ -1,5 +1,5 @@
 Name:           smplayer
-Version:        17.12.0
+Version:        18.1.0
 %global smtube_ver 17.5.0
 %global smplayer_themes_ver 17.3.0
 %global smplayer_skins_ver 15.2.0
@@ -15,9 +15,9 @@ Source3:        http://downloads.sourceforge.net/smplayer/smplayer-themes-%{smpl
 Source4:        http://downloads.sourceforge.net/smplayer/smplayer-skins-%{smplayer_skins_ver}.tar.bz2
 # Fix regression in Thunar (TODO: re-check in upcoming versions!)
 # https://bugzilla.rpmfusion.org/show_bug.cgi?id=1217
-Patch0:         https://raw.githubusercontent.com/UnitedRPMs/smplayer-smtube/master/smplayer-0.8.3-desktop-files.patch
-Patch2:         https://raw.githubusercontent.com/UnitedRPMs/smplayer-smtube/master/smplayer-14.9.0.6966-system-qtsingleapplication.patch
-Patch3:         https://raw.githubusercontent.com/UnitedRPMs/smplayer-smtube/master/smtube-16.3.0-system-qtsingleapplication.patch
+Patch0:         smplayer-18.1.0-desktop-files.patch
+Patch2:         smplayer-14.9.0.6966-system-qtsingleapplication.patch
+Patch3:         smtube-16.3.0-system-qtsingleapplication.patch
 
 BuildRequires:  desktop-file-utils
 BuildRequires:  pkgconfig(Qt5)
@@ -94,7 +94,7 @@ sed -e 's:DEFINES += UPDATE_CHECKER:#&:' \
 sed -e 's:DEFINES += SHARE_WIDGET:#&:' \
  -i src/smplayer.pro
 
-%patch0 -p0 -b .desktop-files
+%patch0 -p1
 %patch2 -p1 -b .qtsingleapplication
 pushd smtube-%{smtube_ver}
 %patch3 -p1 -b .qtsingleapplication
@@ -206,6 +206,9 @@ fi
 %{_datadir}/smplayer/themes/
 
 %changelog
+
+* Wed Jan 10 2018 Unitedrpms Project <unitedrpms AT protonmail DOT com> 18.1.0-1  
+- Updated to 18.1.0
 
 * Thu Nov 16 2017 Unitedrpms Project <unitedrpms AT protonmail DOT com> 17.11.2-1  
 - Updated to 17.11.2
