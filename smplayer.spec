@@ -1,6 +1,6 @@
 Name:           smplayer
-Version:        18.1.0
-%global smtube_ver 17.5.0
+Version:        18.2.0
+%global smtube_ver  18.1.0
 %global smplayer_themes_ver 17.3.0
 %global smplayer_skins_ver 15.2.0
 Release:        1%{?dist}
@@ -206,6 +206,9 @@ fi
 %{_datadir}/smplayer/themes/
 
 %changelog
+
+* Wed Jan 24 2018 Unitedrpms Project <unitedrpms AT protonmail DOT com> 18.2.0-1  
+- Updated to 18.2.0
 
 * Wed Jan 10 2018 Unitedrpms Project <unitedrpms AT protonmail DOT com> 18.1.0-1  
 - Updated to 18.1.0
