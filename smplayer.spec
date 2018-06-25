@@ -1,7 +1,7 @@
 Name:           smplayer
-Version:        18.5.0
-%global smtube_ver  18.1.0
-%global smplayer_themes_ver 17.3.0
+Version:        18.6.0
+%global smtube_ver  18.3.0
+%global smplayer_themes_ver 18.6.0
 %global smplayer_skins_ver 15.2.0
 Release:        1%{?dist}
 Summary:        A graphical frontend for mplayer
@@ -10,8 +10,8 @@ Group:          Applications/Multimedia
 License:        GPLv2+
 URL:            http://smplayer.sourceforge.net/
 Source0:        http://downloads.sourceforge.net/smplayer/smplayer-%{version}.tar.bz2
-Source2:        http://downloads.sourceforge.net/smtube/smtube-%{smtube_ver}.tar.bz2
-Source3:        http://downloads.sourceforge.net/smplayer/smplayer-themes-%{smplayer_themes_ver}.tar.bz2
+Source2:        https://sourceforge.net/projects/smtube/files/SMTube/%{smtube_ver}/smtube-%{smtube_ver}.tar.bz2
+Source3:        https://sourceforge.net/projects/smplayer/files/SMPlayer-themes/%{smplayer_themes_ver}/smplayer-themes-%{smplayer_themes_ver}.tar.bz2
 Source4:        http://downloads.sourceforge.net/smplayer/smplayer-skins-%{smplayer_skins_ver}.tar.bz2
 # Fix regression in Thunar (TODO: re-check in upcoming versions!)
 # https://bugzilla.rpmfusion.org/show_bug.cgi?id=1217
@@ -213,6 +213,9 @@ fi
 %{_datadir}/smplayer/themes/
 
 %changelog
+
+* Sat Jun 23 2018 Unitedrpms Project <unitedrpms AT protonmail DOT com> 18.6.0-1  
+- Updated to 18.6.0
 
 * Thu May 24 2018 Unitedrpms Project <unitedrpms AT protonmail DOT com> 18.5.0-1  
 - Updated to 18.5.0
