@@ -18,7 +18,6 @@ Source4:        http://downloads.sourceforge.net/smplayer/smplayer-skins-%{smpla
 Patch0:         smplayer-18.1.0-desktop-files.patch
 Patch2:         smplayer-14.9.0.6966-system-qtsingleapplication.patch
 Patch3:         smtube-16.3.0-system-qtsingleapplication.patch
-Patch4:		webserver.patch
 
 BuildRequires:  desktop-file-utils
 BuildRequires:  pkgconfig(Qt5)
@@ -79,7 +78,6 @@ A set of themes for SMPlayer and a set of skins for SMPlayer.
 
 %prep
 %setup -qa2 -qa3 -qa4 -qn %{name}-%{version}
-%patch4 -p1
 #remove some bundle sources
 rm -rf zlib
 rm -rf src/qtsingleapplication/
