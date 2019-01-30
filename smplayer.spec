@@ -17,7 +17,7 @@ Source4:        http://downloads.sourceforge.net/smplayer/smplayer-skins-%{smpla
 # https://bugzilla.rpmfusion.org/show_bug.cgi?id=1217
 Patch0:         smplayer-18.1.0-desktop-files.patch
 Patch2:         smplayer-14.9.0.6966-system-qtsingleapplication.patch
-Patch3:         smtube-16.3.0-system-qtsingleapplication.patch
+Patch3:         smtube-19.1.0-system-qtsingleapplication.patch
 
 BuildRequires:  desktop-file-utils
 BuildRequires:  pkgconfig(Qt5)
