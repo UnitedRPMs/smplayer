@@ -3,6 +3,6 @@ BUILDROOT/*
 RPMS/*
 SPECS/*
 SRPMS/*
-smplayer*.tar.bz2
-smtube*.tar.bz2
+*.tar.bz2
 .directory
+*.rpm

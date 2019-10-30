@@ -1,6 +1,6 @@
 Name:           smplayer
-Version:        19.5.0
-%global smtube_ver  18.11.0
+Version:        19.10.0
+%global smtube_ver  19.6.0
 %global smplayer_themes_ver 18.6.0
 %global smplayer_skins_ver 15.2.0
 Release:        1%{?dist}
@@ -34,6 +34,7 @@ BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5Xml)
 BuildRequires:  pkgconfig(Qt5Designer)
 BuildRequires:  pkgconfig(zlib)
+BuildRequires:	pkgconfig(xext)
 BuildRequires:  qt5-linguist
 BuildRequires:  qtsingleapplication-qt5-devel
 BuildRequires:  quazip-qt5-devel
@@ -211,6 +212,9 @@ fi
 %{_datadir}/smplayer/themes/
 
 %changelog
+
+* Tue Oct 29 2019 Unitedrpms Project <unitedrpms AT protonmail DOT com> 19.10.0-1  
+- Updated to 19.10.0
 
 * Thu May 16 2019 Unitedrpms Project <unitedrpms AT protonmail DOT com> 19.5.0-1  
 - Updated to 19.5.0
