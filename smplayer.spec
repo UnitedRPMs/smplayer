@@ -1,9 +1,9 @@
 Name:           smplayer
-Version:        19.10.0
+Version:        19.10.2
 %global smtube_ver  19.6.0
 %global smplayer_themes_ver 18.6.0
 %global smplayer_skins_ver 15.2.0
-Release:        1%{?dist}
+Release:        7%{?dist}
 Summary:        A graphical frontend for mplayer
 
 Group:          Applications/Multimedia
@@ -212,6 +212,9 @@ fi
 %{_datadir}/smplayer/themes/
 
 %changelog
+
+* Wed Nov 13 2019 Unitedrpms Project <unitedrpms AT protonmail DOT com> 19.10.2-7  
+- Updated to 19.10.2
 
 * Tue Oct 29 2019 Unitedrpms Project <unitedrpms AT protonmail DOT com> 19.10.0-1  
 - Updated to 19.10.0
