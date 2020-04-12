@@ -1,6 +1,6 @@
 Name:           smplayer
-Version:        19.10.2
-%global smtube_ver  19.6.0
+Version:        20.4.0
+%global smtube_ver  20.1.0
 %global smplayer_themes_ver 18.6.0
 %global smplayer_skins_ver 15.2.0
 Release:        7%{?dist}
@@ -212,6 +212,9 @@ fi
 %{_datadir}/smplayer/themes/
 
 %changelog
+
+* Sat Apr 11 2020 Unitedrpms Project <unitedrpms AT protonmail DOT com> 20.4.0-7  
+- Updated to 20.4.0
 
 * Wed Nov 13 2019 Unitedrpms Project <unitedrpms AT protonmail DOT com> 19.10.2-7  
 - Updated to 19.10.2
