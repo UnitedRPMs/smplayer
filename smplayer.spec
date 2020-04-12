@@ -1,3 +1,5 @@
+%define _legacy_common_support 1
+
 Name:           smplayer
 Version:        20.4.0
 %global smtube_ver  20.1.0
