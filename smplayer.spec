@@ -5,7 +5,7 @@ Version:        20.4.2
 %global smtube_ver  20.1.0
 %global smplayer_themes_ver 18.6.0
 %global smplayer_skins_ver 15.2.0
-Release:        7%{?dist}
+Release:        8%{?dist}
 Summary:        A graphical frontend for mplayer
 
 Group:          Applications/Multimedia
@@ -214,6 +214,9 @@ fi
 %{_datadir}/smplayer/themes/
 
 %changelog
+
+* Thu Apr 23 2020 Unitedrpms Project <unitedrpms AT protonmail DOT com> 20.4.2-8  
+- Rebuilt
 
 * Wed Apr 15 2020 Unitedrpms Project <unitedrpms AT protonmail DOT com> 20.4.2-7  
 - Updated to 20.4.2
