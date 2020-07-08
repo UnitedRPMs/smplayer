@@ -22,6 +22,7 @@ Patch2:         smplayer-14.9.0.6966-system-qtsingleapplication.patch
 Patch3:         smtube-19.1.0-system-qtsingleapplication.patch
 
 BuildRequires:  desktop-file-utils
+BuildRequires:	qt5-qtbase-private-devel
 BuildRequires:  pkgconfig(Qt5)
 BuildRequires:  pkgconfig(Qt5Concurrent)
 BuildRequires:  pkgconfig(Qt5Core)
