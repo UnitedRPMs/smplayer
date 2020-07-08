@@ -100,7 +100,7 @@ sed -e 's:DEFINES += SHARE_WIDGET:#&:' \
 %patch0 -p1
 %patch2 -p1 -b .qtsingleapplication
 pushd smtube-%{smtube_ver}
-%patch3 -p1 -b .qtsingleapplication
+#patch3 -p1 -b .qtsingleapplication
 # correction for wrong-file-end-of-line-encoding on smtube
 %{__sed} -i 's/\r//' *.txt
 popd
