@@ -1,7 +1,7 @@
-%define _legacy_common_support 1
+#define _legacy_common_support 1
 
 Name:           smplayer
-Version:        20.6.0
+Version:        21.1.0
 %global smtube_ver  20.6.0
 %global smplayer_themes_ver 18.6.0
 %global smplayer_skins_ver 15.2.0
@@ -20,6 +20,8 @@ Source4:        http://downloads.sourceforge.net/smplayer/smplayer-skins-%{smpla
 Patch0:         smplayer-18.1.0-desktop-files.patch
 Patch2:         smplayer-14.9.0.6966-system-qtsingleapplication.patch
 Patch3:         smtube-19.1.0-system-qtsingleapplication.patch
+Patch4:         smplayer-18.2.0-jobserver.patch
+Patch5:         smplayer-18.3.0-disable-werror.patch
 
 BuildRequires:  desktop-file-utils
 BuildRequires:	qt5-qtbase-private-devel
@@ -82,6 +84,9 @@ A set of themes for SMPlayer and a set of skins for SMPlayer.
 
 %prep
 %setup -qa2 -qa3 -qa4 -qn %{name}-%{version}
+%patch4 -p1
+%patch5 -p1
+
 #remove some bundle sources
 rm -rf zlib
 rm -rf src/qtsingleapplication/
@@ -215,6 +220,9 @@ fi
 %{_datadir}/smplayer/themes/
 
 %changelog
+
+* Mon Jan 11 2021 Unitedrpms Project <unitedrpms AT protonmail DOT com> 21.1.0-7  
+- Updated to 21.1.0
 
 * Fri Jul 03 2020 Unitedrpms Project <unitedrpms AT protonmail DOT com> 20.6.0-7  
 - Updated to 20.6.0
