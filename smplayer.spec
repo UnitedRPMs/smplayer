@@ -1,8 +1,8 @@
 #define _legacy_common_support 1
 
 Name:           smplayer
-Version:        21.1.0
-%global smtube_ver  20.6.0
+Version:        21.8.0
+%global smtube_ver  21.7.0
 %global smplayer_themes_ver 18.6.0
 %global smplayer_skins_ver 15.2.0
 Release:        7%{?dist}
@@ -17,7 +17,7 @@ Source3:        https://sourceforge.net/projects/smplayer/files/SMPlayer-themes/
 Source4:        http://downloads.sourceforge.net/smplayer/smplayer-skins-%{smplayer_skins_ver}.tar.bz2
 # Fix regression in Thunar (TODO: re-check in upcoming versions!)
 # https://bugzilla.rpmfusion.org/show_bug.cgi?id=1217
-Patch0:         smplayer-18.1.0-desktop-files.patch
+Patch0:         smplayer-21.8.0-desktop-files.patch
 Patch2:         smplayer-14.9.0.6966-system-qtsingleapplication.patch
 Patch3:         smtube-19.1.0-system-qtsingleapplication.patch
 Patch4:         smplayer-18.2.0-jobserver.patch
@@ -113,9 +113,6 @@ popd
 
 # correction for wrong-file-end-of-line-encoding
 %{__sed} -i 's/\r//' *.txt
-# fix files which are not UTF-8
-iconv -f Latin1 -t UTF-8 -o Changelog.utf8 Changelog
-mv Changelog.utf8 Changelog
 
 # change rcc binary
 %{__sed} -e 's/rcc -binary/rcc-qt5 -binary/' -i smplayer-themes-%{smplayer_themes_ver}/themes/Makefile
@@ -201,10 +198,10 @@ fi
 %exclude %{_datadir}/smplayer/themes/
 %{_mandir}/man1/%{name}.1.*
 %{_docdir}/%{name}
+%{_datadir}/metainfo/*.appdata.xml
 
 %files -n smtube
-%doc smtube-%{smtube_ver}/Changelog smtube-%{smtube_ver}/Readme.txt
-%doc smtube-%{smtube_ver}/Release_notes.txt
+%doc smtube-%{smtube_ver}/Readme.txt
 %license smtube-%{smtube_ver}/Copying.txt
 %{_bindir}/smtube
 %{_datadir}/applications/smtube.desktop
@@ -220,6 +217,9 @@ fi
 %{_datadir}/smplayer/themes/
 
 %changelog
+
+* Mon Aug 23 2021 Unitedrpms Project <unitedrpms AT protonmail DOT com> 21.8.0-7  
+- Updated to 21.8.0
 
 * Mon Jan 11 2021 Unitedrpms Project <unitedrpms AT protonmail DOT com> 21.1.0-7  
 - Updated to 21.1.0
