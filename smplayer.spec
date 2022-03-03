@@ -1,7 +1,7 @@
 #define _legacy_common_support 1
 
 Name:           smplayer
-Version:        21.10.0
+Version:        22.2.0
 %global smtube_ver  21.10.0
 %global smplayer_themes_ver 18.6.0
 %global smplayer_skins_ver 15.2.0
@@ -217,6 +217,9 @@ fi
 %{_datadir}/smplayer/themes/
 
 %changelog
+
+* Tue Mar 01 2022 Unitedrpms Project <unitedrpms AT protonmail DOT com> 22.2.0-7  
+- Updated to 22.2.0
 
 * Fri Nov 05 2021 Unitedrpms Project <unitedrpms AT protonmail DOT com> 21.10.0-7  
 - Updated to 21.10.0
