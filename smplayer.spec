@@ -23,6 +23,7 @@ Patch3:         smtube-19.1.0-system-qtsingleapplication.patch
 Patch4:         smplayer-18.2.0-jobserver.patch
 Patch5:         smplayer-18.3.0-disable-werror.patch
 
+BuildRequires:	annobin-plugin-gcc
 BuildRequires:  desktop-file-utils
 BuildRequires:	qt5-qtbase-private-devel
 BuildRequires:  pkgconfig(Qt5)
